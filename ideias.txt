@@ -1,0 +1,35 @@
+🔧 Funcionalidades úteis que você pode adicionar
+Sistema de histórico (registro de entradas/saídas):
+
+Toda vez que um produto for adicionado ou removido, registra no banco com data e quem fez a ação.
+
+Controle de usuários com níveis de permissão:
+
+Ex: "admin" pode tudo, "estoquista" só vê e cadastra produtos.
+
+Editar e deletar produtos:
+
+Botões "Editar" e "Excluir" do lado de cada item.
+
+Aviso de estoque baixo:
+
+Exibir em vermelho os produtos com quantidade abaixo de 5.
+
+Exportar dados para Excel (CSV):
+
+Um botão que baixa os produtos e o histórico.
+
+Filtro por data no histórico:
+
+Ver movimentações de hoje, semana, mês.
+
+Buscar usuário logado:
+
+Exibir nome do funcionário logado no topo da dashboard.
+
+🎨 Melhorias de Design (estilo profissional e moderno)
+Dashboard com cards e ícones (tipo painel de admin):
+
+Layout com cards como: Total de Produtos, Entradas Hoje, Saídas Hoje...
+
+node backend/server.js

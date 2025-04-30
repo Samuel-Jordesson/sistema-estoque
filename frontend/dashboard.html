@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Granelmar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- BARRA LATERAL -->
+  <div class="sidebar">
+    <h2>Granelmar</h2>
+    <button onclick="mostrarProdutos()">Produtos</button>
+    <button onclick="mostrarCadastroUsuario()">Cadastrar Usuário</button>
+    <button onclick="toggleTema()">Alternar Tema</button>
+    <button onclick="logout()">Sair</button>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <div id="produtos-container">
+      <h2>Estoque</h2>
+      <input type="text" id="busca" placeholder="Pesquisar produto..." oninput="buscarProduto()">
+      <div id="lista-produtos"></div>
+
+      <h3>Adicionar Produto</h3>
+      <input type="text" id="nome" placeholder="Nome do produto">
+      <input type="number" id="quantidade" placeholder="Quantidade">
+      <input type="text" id="descricao" placeholder="Descrição (opcional)">
+      <button onclick="cadastrarProduto()">Cadastrar</button>
+    </div>
+
+    <!-- CADASTRO DE USUÁRIO -->
+    <div id="cadastro-usuario" style="display: none;">
+      <h2>Cadastrar Novo Usuário</h2>
+      <input type="text" id="novo-nome" placeholder="Nome">
+      <input type="email" id="novo-email" placeholder="Email">
+      <input type="password" id="nova-senha" placeholder="Senha">
+      <button onclick="cadastrarUsuario()">Cadastrar Usuário</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE MOVIMENTAÇÃO -->
+  <div id="modal-movimentacao" class="modal" style="display: none;">
+    <span class="modal-close" onclick="fecharModal()">×</span>
+    <h3 id="modal-produto-nome">Produto</h3>
+    <input type="number" id="quantidade-movimentacao" placeholder="Quantidade">
+    <button onclick="adicionarQuantidade()">Adicionar</button>
+    <button onclick="removerQuantidade()">Remover</button>
+    <button onclick="deletarProduto()">Deletar Produto</button>
+
+  </div>
+
+  <div id="menu-flutuante" class="menu-flutuante" style="display: none;">
+    <h3>Movimentar Produto</h3>
+  
+    <input type="number" id="quantidade-adicionar" placeholder="Qtd a adicionar">
+    <button onclick="movimentarProduto(idSelecionado, 'adicionar')">Adicionar</button>
+  
+    <input type="number" id="quantidade-retirar" placeholder="Qtd a retirar">
+    <button onclick="movimentarProduto(idSelecionado, 'retirar')">Retirar</button>
+  
+    <button onclick="fecharMenuFlutuante()">Fechar</button>
+  </div>
+
+  <div id="toast" class="toast">Notificação</div>
+
+<style>
+  .toast {
+    visibility: hidden;
+    min-width: 200px;
+    margin-left: -100px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 12px 20px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.5s ease, bottom 0.5s ease;
+  }
+
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+  }
+</style>
+
+  
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

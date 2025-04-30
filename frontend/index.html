@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Granelmar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-box">
+      <h2 id="titulo-formulario">Login</h2>
+
+      <!-- Formulário de Login -->
+      <div id="login-form">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+        <p style="text-align:center; margin-top:10px;">
+          <a href="#" onclick="mostrarCadastro()">Cadastrar novo usuário</a>
+        </p>
+        <p id="erro" class="erro-msg"></p>
+      </div>
+
+      <!-- Formulário de Cadastro -->
+      <div id="cadastro-form" style="display: none;">
+        <input type="text" id="novo-nome" placeholder="Nome">
+        <input type="email" id="novo-email" placeholder="Email">
+        <input type="password" id="nova-senha" placeholder="Senha">
+        <button onclick="cadastrarUsuario()">Cadastrar</button>
+        <p style="text-align:center; margin-top:10px;">
+          <a href="#" onclick="mostrarLogin()">Já tenho login</a>
+        </p>
+        <p id="cadastro-erro" class="erro-msg"></p>
+        <p id="cadastro-sucesso" class="sucesso-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
