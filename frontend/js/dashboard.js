@@ -269,6 +269,37 @@ function mostrarLogs() {
     });
 }
 
+function mostrarHistorico() {
+  document.getElementById("produtos-container").style.display = "none";
+  document.getElementById("cadastro-usuario").style.display = "none";
+  document.getElementById("historico-container").style.display = "block";
+
+  carregarHistorico();
+}
+
+function carregarHistorico() {
+  fetch('/logs') // Ajuste aqui caso sua rota do back-end seja diferente
+    .then(res => res.json())
+    .then(data => {
+      const lista = document.getElementById("lista-historico");
+      lista.innerHTML = "";
+
+      if (data.length === 0) {
+        lista.innerHTML = "<p>Nenhuma ação registrada ainda.</p>";
+        return;
+      }
+
+      data.forEach(log => {
+        const item = document.createElement("div");
+        item.textContent = `${log.data} - ${log.usuario} - ${log.acao}`;
+        lista.appendChild(item);
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao carregar histórico:", err);
+    });
+}
+
 
 // Inicializa
 window.onload = () => {
