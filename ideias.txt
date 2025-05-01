@@ -33,3 +33,5 @@ Dashboard com cards e ícones (tipo painel de admin):
 Layout com cards como: Total de Produtos, Entradas Hoje, Saídas Hoje...
 
 node backend/server.js
+
+ideia

@@ -215,6 +215,59 @@ function mostrarToast(mensagem) {
   }, 3000);
 }
 
+function carregarLogs() {
+  fetch('http://localhost:3000/api/logs')
+    .then(response => response.json())
+    .then(logs => {
+      const container = document.getElementById('logs-container');
+      container.innerHTML = '';
+
+      logs.forEach(log => {
+        const logItem = document.createElement('div');
+        logItem.classList.add('log-item');
+        logItem.innerHTML = `
+          <strong>${log.usuario}</strong> ${log.acao} <strong>${log.quantidade}</strong> de <strong>${log.produto}</strong> em <em>${log.data}</em>
+        `;
+        container.appendChild(logItem);
+      });
+    })
+    .catch(err => {
+      console.error('Erro ao carregar logs:', err);
+    });
+}
+
+function mostrarLogs() {
+  document.getElementById('produtos-container').style.display = 'none';
+  document.getElementById('cadastro-usuario').style.display = 'none';
+  document.getElementById('logs').style.display = 'block';
+
+  fetch('http://localhost:3000/api/logs')
+    .then(response => response.json())
+    .then(data => {
+      const logsContainer = document.getElementById('logs-container');
+      logsContainer.innerHTML = '';
+
+      if (data.length === 0) {
+        logsContainer.innerHTML = '<p>Nenhuma ação registrada.</p>';
+        return;
+      }
+
+      data.forEach(log => {
+        const logItem = document.createElement('div');
+        logItem.className = 'log-item';
+        logItem.style.marginBottom = '10px';
+        logItem.innerHTML = `
+          <strong>${log.usuario || 'Sistema'}:</strong> ${log.acao} <br>
+          <small>${new Date(log.timestamp).toLocaleString()}</small>
+        `;
+        logsContainer.appendChild(logItem);
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao buscar logs:', error);
+      document.getElementById('logs-container').innerHTML = '<p>Erro ao carregar o histórico.</p>';
+    });
+}
 
 
 // Inicializa

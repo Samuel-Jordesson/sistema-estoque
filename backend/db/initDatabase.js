@@ -45,5 +45,17 @@ db.serialize(() => {
   `);
 });
 
+db.run(`
+  CREATE TABLE IF NOT EXISTS logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario TEXT,
+    acao TEXT,
+    produto TEXT,
+    quantidade INTEGER,
+    data TEXT
+  )
+`);
+
+
 db.close();
 console.log('Banco de dados criado com sucesso!');
